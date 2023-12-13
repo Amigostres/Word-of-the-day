@@ -25,14 +25,14 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: '100%',
     flexWrap: 'wrap',
     backgroundColor: '#ddd',
   },
   wordOfTheDay : {
     backgroundColor: 'blue',
     alignItems:'center',
-    // justifyContent: 'center',
+    justifyContent: 'center',
     gap: 20,
     width: '100%',
     padding:50
@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
     
   },
   DefinitionContainer : {
-    flex:2
+    alignSelf: 'center',
+    padding: 20
+    // flex:2
   }
 });
