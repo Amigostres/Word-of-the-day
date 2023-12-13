@@ -5,7 +5,7 @@ export default function App() {
   const message: string = 'hello World';
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>The word of the day </Text>
       <Text>{message}</Text>
       <StatusBar style="auto" />
     </View>
@@ -15,8 +15,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    flexWrap: 'wrap',
+    backgroundColor: '#ddd',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'space-around',
   },
 });
