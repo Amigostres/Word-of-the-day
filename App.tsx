@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const fillerText:string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud`
   const [word, setWord] = useState("WordOfTheDay")
-  const [definition, setDefinition] = useState('a word is a word')
+  const [definition, setDefinition] = useState(fillerText)
   return (
     <View style={styles.container}>
       {/* here will be the header and the world of the day */}
@@ -17,8 +18,20 @@ export default function App() {
 
       {/* here there will be the definition */}
       <View style={styles.DefinitionContainer}>
-        <Text>{definition}</Text>
+        <Text style={styles.textComponent}>{definition}</Text>
+        <Button title='used?' />
       </View>
+
+      {/* example use cases */}
+      <View>
+
+      </View>
+
+      {/* used words history */}
+      <View>
+
+      </View>
+
     </View>
   );
 }
@@ -46,8 +59,17 @@ const styles = StyleSheet.create({
     
   },
   DefinitionContainer : {
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+    gap: 20,
     alignSelf: 'center',
     padding: 20
     // flex:2
+  },
+  textComponent: {
+    flex: 2,
+
+  },
+  usedButton: {
   }
 });
