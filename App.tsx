@@ -1,13 +1,24 @@
+import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  const message: string = 'hello World';
+  const [word, setWord] = useState("WordOfTheDay")
+  const [definition, setDefinition] = useState('a word is a word')
   return (
     <View style={styles.container}>
-      <Text>The word of the day </Text>
-      <Text>{message}</Text>
-      <StatusBar style="auto" />
+      {/* here will be the header and the world of the day */}
+      <View style={styles.wordOfTheDay}>
+        <Text style={styles.Text}>The word of the day </Text>
+        <Text style={styles.TheWord}>{word}</Text>
+        <StatusBar style="auto" />
+      </View>
+
+
+      {/* here there will be the definition */}
+      <View style={styles.DefinitionContainer}>
+        <Text>{definition}</Text>
+      </View>
     </View>
   );
 }
@@ -17,7 +28,24 @@ const styles = StyleSheet.create({
     flex: 1,
     flexWrap: 'wrap',
     backgroundColor: '#ddd',
-    alignItems: 'center',
-    // justifyContent: 'space-around',
   },
+  wordOfTheDay : {
+    backgroundColor: 'blue',
+    alignItems:'center',
+    // justifyContent: 'center',
+    gap: 20,
+    width: '100%',
+    padding:50
+  },
+  Text: {
+    fontSize:20,
+
+  },
+  TheWord: {
+    fontSize: 30,
+    
+  },
+  DefinitionContainer : {
+    flex:2
+  }
 });
