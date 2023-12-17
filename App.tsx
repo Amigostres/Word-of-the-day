@@ -1,22 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 
 export default function App() {
-  const message: string = 'hello World';
+  const message: string = 'word of the DAY';
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <View
+      style={{
+        // flex: 1,
+        // padding: 150,
+        width: "100%",
+        height: 300,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#ddd'
+      }}>
       <Text>{message}</Text>
-      <StatusBar style="auto" />
+
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
