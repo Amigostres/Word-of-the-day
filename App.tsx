@@ -8,12 +8,15 @@ export default function App() {
   const [definition, setDefinition] = useState(fillerText)
   return (
     <View style={styles.container}>
-      {/* here will be the header and the world of the day */}
-      <View style={styles.wordOfTheDay}>
-        <Text style={styles.Text}>The word of the day </Text>
-        <Text style={styles.TheWord}>{word}</Text>
-        <StatusBar style="auto" />
-      </View>
+      <ImageBackground source={require('./assets/backgroundImage.jpeg')}>
+        {/* here will be the header and the world of the day */}
+        <View style={styles.wordOfTheDay}>
+          <Text style={styles.Text}>The word of the day </Text>
+          <Text style={styles.TheWord}>{word}</Text>
+          <StatusBar style="auto" />
+        </View>
+
+      </ImageBackground>
 
 
       {/* here there will be the definition */}
@@ -43,12 +46,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#ddd',
   },
   wordOfTheDay : {
-    backgroundColor: 'blue',
+    // backgroundColor: 'blue',
     alignItems:'center',
     justifyContent: 'center',
     gap: 20,
     width: '100%',
-    padding:50
+    height: 250,
+    // padding:50
   },
   Text: {
     fontSize:20,
