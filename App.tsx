@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View, ImageBackground } from 'react-native';
 
@@ -6,14 +6,18 @@ export default function App() {
   const fillerText:string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud`
   const [word, setWord] = useState("WordOfTheDay")
   const [definition, setDefinition] = useState(fillerText)
+  useEffect(() => {
+    fetch('https://random-word-api.herokuapp.com/word')
+    .then(response => response.json())
+    .then(data => setWord(data))
+  }, [])
   return (
     <View style={styles.container}>
       <ImageBackground source={require('./assets/backgroundImage.jpeg')}>
-        {/* here will be the header and the world of the day */}
+        {/* here will be the header and the word of the day */}
         <View style={styles.wordOfTheDay}>
           <Text style={styles.Text}>The word of the day </Text>
           <Text style={styles.TheWord}>{word}</Text>
-          <StatusBar style="auto" />
         </View>
 
       </ImageBackground>
@@ -22,7 +26,7 @@ export default function App() {
       {/* here there will be the definition */}
       <View style={styles.DefinitionContainer}>
         <Text style={styles.textComponent}>{definition}</Text>
-        <Button title='used?' />
+        <Button title='Change' />
       </View>
 
       {/* example use cases */}
@@ -34,7 +38,7 @@ export default function App() {
       <View>
 
       </View>
-
+      <StatusBar style="auto" />
     </View>
   );
 };
