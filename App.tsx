@@ -6,11 +6,21 @@ export default function App() {
   const fillerText:string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud`
   const [word, setWord] = useState("WordOfTheDay")
   const [definition, setDefinition] = useState(fillerText)
+  const [changeWord, setChangeWord] = useState(0) // this is only here to change the word when the change button is pressed
+
+
+  function handleWordChange(){
+    
+    setChangeWord(prev => prev+1)
+
+  }
+ //here we get the word from the API
   useEffect(() => {
     fetch('https://random-word-api.herokuapp.com/word')
     .then(response => response.json())
     .then(data => setWord(data))
-  }, [])
+  }, [changeWord])
+
   return (
     <View style={styles.container}>
       <ImageBackground source={require('./assets/backgroundImage.jpeg')}>
@@ -26,7 +36,7 @@ export default function App() {
       {/* here there will be the definition */}
       <View style={styles.DefinitionContainer}>
         <Text style={styles.textComponent}>{definition}</Text>
-        <Button title='Change' />
+        <Button title='Change' onPress={handleWordChange} />
       </View>
 
       {/* example use cases */}
