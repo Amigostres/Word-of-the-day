@@ -19,11 +19,13 @@ export default function App() {
   useEffect(() => {
     fetch('https://random-word-api.herokuapp.com/word')
     .then(response => response.json())
-    .then(data => setWord(data))
+    .then(data => setWord(data[0]))
   }, [changeWord])
 
   return (
     <View style={styles.container}>
+
+      {/* the word of the day view */}
       <WordOfDay word={word} />
 
 

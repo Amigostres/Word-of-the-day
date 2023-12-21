@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 
-export default function wordOfDay({word}){
+export default function wordOfDay({word}: {word:string}){
 
 
   return(
@@ -8,7 +8,12 @@ export default function wordOfDay({word}){
         {/* here will be the header and the word of the day */}
         <View style={styles.wordOfTheDay}>
           <Text style={styles.Text}>The word of the day </Text>
-          <Text style={styles.TheWord}>{word}</Text>
+          <Text 
+            style={styles.TheWord} 
+            selectable={true} 
+            // selectionColor='orange'
+            >
+              {word}</Text>
         </View>
 
       </ImageBackground>
