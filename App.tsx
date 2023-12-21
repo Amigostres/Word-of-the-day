@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import WordOfDay from './components/WordOfDay';
 
 export default function App() {
   const fillerText:string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud`
@@ -23,14 +24,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./assets/backgroundImage.jpeg')}>
-        {/* here will be the header and the word of the day */}
-        <View style={styles.wordOfTheDay}>
-          <Text style={styles.Text}>The word of the day </Text>
-          <Text style={styles.TheWord}>{word}</Text>
-        </View>
-
-      </ImageBackground>
+      <WordOfDay word={word} />
 
 
       {/* here there will be the definition */}
@@ -58,23 +52,6 @@ const styles = StyleSheet.create({
     width: '100%',
     flexWrap: 'wrap',
     backgroundColor: '#ddd',
-  },
-  wordOfTheDay : {
-    // backgroundColor: 'blue',
-    alignItems:'center',
-    justifyContent: 'center',
-    gap: 20,
-    width: '100%',
-    height: 250,
-    // padding:50
-  },
-  Text: {
-    fontSize:20,
-
-  },
-  TheWord: {
-    fontSize: 30,
-    
   },
   DefinitionContainer : {
     alignItems: 'flex-start',
