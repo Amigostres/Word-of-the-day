@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { Button, StyleSheet, Text, View,  } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import WordOfDay from './components/WordOfDay';
 
 export default function App() {
   const fillerText:string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud`
-  const [word, setWord] = useState("WordOfTheDay")
+  const [word, setWord] = useState("...loading")
   const [definition, setDefinition] = useState(fillerText)
   const [changeWord, setChangeWord] = useState(0) // this is only here to change the word when the change button is pressed
 
@@ -21,6 +23,19 @@ export default function App() {
     .then(response => response.json())
     .then(data => setWord(data[0]))
   }, [changeWord])
+
+  // https://react-native-async-storage.github.io/async-storage/docs/usage
+  // attempting to use AsyncStorage to store the word in local storage
+  //not yet hooked up
+  const storeData = async (value: string) => {
+    try {
+      await AsyncStorage.setItem('my-key', value);
+    } catch (e) {
+      // saving error
+      console.log(e);
+      
+    }
+  };
 
   return (
     <View style={styles.container}>
