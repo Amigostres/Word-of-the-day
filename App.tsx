@@ -4,9 +4,9 @@ import { Button, StyleSheet, Text, View, ImageBackground } from 'react-native';
 import WordOfDay from './components/WordOfDay';
 
 export default function App() {
-  const fillerText:string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud`
+  //const fillerText:string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud`
   const [word, setWord] = useState("WordOfTheDay")
-  const [definition, setDefinition] = useState(fillerText)
+  const [definition, setDefinition] = useState('')
   const [changeWord, setChangeWord] = useState(0) // this is only here to change the word when the change button is pressed
 
 
@@ -16,11 +16,24 @@ export default function App() {
 
   }
  //here we get the word from the API
-  useEffect(() => {
-    fetch('https://random-word-api.herokuapp.com/word')
+ useEffect(() => {
+  fetch('https://random-word-api.herokuapp.com/word')
     .then(response => response.json())
     .then(data => setWord(data[0]))
-  }, [changeWord])
+}, [changeWord])
+useEffect(() => {
+  if (word) {
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data[0]) {
+          setDefinition(data[0].meanings[0].definitions[0].definition)
+        }
+      })
+      .catch(error => console.error('Error fetching definition:', error))
+  }
+}, [word])
+
 
   return (
     <View style={styles.container}>
