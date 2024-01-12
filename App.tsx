@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { Button, StyleSheet, Text, View,  } from 'react-native';
+//import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import WordOfDay from './components/WordOfDay';
 
 export default function App() {
@@ -34,6 +36,19 @@ useEffect(() => {
   }
 }, [word])
 
+
+  // https://react-native-async-storage.github.io/async-storage/docs/usage
+  // attempting to use AsyncStorage to store the word in local storage
+  //not yet hooked up
+  // const storeData = async (value: string) => {
+  //   try {
+  //     await AsyncStorage.setItem('my-key', value);
+  //   } catch (e) {
+  //     // saving error
+  //     console.log(e);
+      
+  //   }
+  // };
 
   return (
     <View style={styles.container}>
